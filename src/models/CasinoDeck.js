@@ -23,6 +23,9 @@ export default class CasinoDeck {
         }
     }
 
+    /**
+     * Shuffle the cards, will shuffle the burn pile back into the deck
+     */
     shuffleDeck() {
         this.cards = [...this.cards, ...this.burnPile];
         this.burnPile = [];

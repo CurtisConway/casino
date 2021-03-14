@@ -16,6 +16,9 @@ export default class Blackjack {
         this.shoe.shuffleDeck();
     }
 
+    /**
+     * Deal each player 2 cards 1 by 1
+     */
     dealHands() {
         for (let cardIndex = 0; cardIndex < 2; cardIndex += 1) {
             for (let playerIndex = 0; playerIndex < this.players.length; playerIndex += 1) {
@@ -25,17 +28,28 @@ export default class Blackjack {
         }
     }
 
+    /**
+     * Deal a card to a hand
+     *
+     * @param {PlayerHand} hand
+     */
     dealCard(hand) {
         hand.addCard(this.shoe.cards[this.shoe.cards.length - 1]);
         this.shoe.cards.pop();
     }
 
+    /**
+     * Get the possible values of a hand
+     *
+     * @param {PlayerHand} hand
+     * @returns {Array}
+     */
     static getHandValues(hand) {
         const values = [];
         values.push(hand.cards
             .map((card) => card.value)
             .reduce((accumulator = 0, currentValue) => accumulator + currentValue));
-        if (hand.cards.filter((card) => card.name === 'Ace').length > 0 && values[0] + 10 <= 21) {
+        if (hand.cards.filter((card) => card.name === 'Ace').length > 0 && values[0] + 10 < 21) {
             values.push(values[0] + 10);
         }
         return values;
