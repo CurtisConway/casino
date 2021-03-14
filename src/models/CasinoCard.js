@@ -1,7 +1,7 @@
 export default class CasinoCard {
     constructor(card = CasinoCard.cards[0], suit = CasinoCard.suits[0]) {
         this.name = card.name;
-        this.values = card.values;
+        this.value = card.value;
         this.suit = suit;
     }
 
@@ -10,55 +10,55 @@ export default class CasinoCard {
     static cards = [
         {
             name: 'Ace',
-            values: [1, 11],
+            value: 1,
         },
         {
             name: 'Two',
-            values: [2],
+            value: 2,
         },
         {
             name: 'Three',
-            values: [3],
+            value: 3,
         },
         {
             name: 'Four',
-            values: [4],
+            value: 4,
         },
         {
             name: 'Five',
-            values: [5],
+            value: 5,
         },
         {
             name: 'Six',
-            values: [6],
+            value: 6,
         },
         {
             name: 'Seven',
-            values: [7],
+            value: 7,
         },
         {
             name: 'Eight',
-            values: [8],
+            value: 8,
         },
         {
             name: 'Nine',
-            values: [9],
+            value: 9,
         },
         {
             name: 'Ten',
-            values: [10],
+            value: 10,
         },
         {
             name: 'Jack',
-            values: [10],
+            value: 10,
         },
         {
             name: 'Queen',
-            values: [10],
+            value: 10,
         },
         {
             name: 'King',
-            values: [10],
+            value: 10,
         },
     ]
 }

@@ -31,14 +31,13 @@ export default class Blackjack {
     }
 
     static getHandValues(hand) {
-        const values = [0, 0];
-        console.log(hand.cards);
-
-        hand.cards.forEach((card, index) => {
-            for (let i = 0; i < 2; i++) {
-                values[index] += card.values[i];
-            }
-        });
+        const values = [];
+        values.push(hand.cards
+            .map((card) => card.value)
+            .reduce((accumulator = 0, currentValue) => accumulator + currentValue));
+        if (hand.cards.filter((card) => card.name === 'Ace').length > 0 && values[0] + 10 <= 21) {
+            values.push(values[0] + 10);
+        }
         return values;
     }
 }

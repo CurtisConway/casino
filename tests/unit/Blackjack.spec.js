@@ -48,8 +48,9 @@ describe('Blackjack', () => {
     it('can get a hands value', () => {
         const hand = new PlayerHand();
         hand.addCard(new CasinoCard());
-        hand.addCard(new CasinoCard());
-
-        console.log(Blackjack.getHandValues(hand));
+        hand.addCard(new CasinoCard(CasinoCard.cards[1]));
+        hand.addCard(new CasinoCard(CasinoCard.cards[2]));
+        const values = Blackjack.getHandValues(hand);
+        expect(values).toMatchObject([6, 16]);
     });
 });
