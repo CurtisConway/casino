@@ -248,6 +248,7 @@ export default {
 
         handleFailure() {
             clearTimeout(this.gameTimer);
+            this.completedRounds = 0;
             this.dialogText = 'Answer incorrect...';
             this.gameState = GAME_STATES.waiting;
             this.resetInput();
