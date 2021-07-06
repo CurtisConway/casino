@@ -348,6 +348,14 @@ button {
   }
 }
 
+.git-link {
+  color:#fff;
+  opacity:.75;
+  position:fixed;
+  bottom:15px;
+  left:15px;
+}
+
 @keyframes scaleXIn {
   from {
     transform:scaleX(1);

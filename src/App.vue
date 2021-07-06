@@ -79,14 +79,19 @@
                 <input id="rounds" type="number" v-model.number="roundsInterface" min="1" max="10">
             </div>
         </div>
+
+        <a href="https://gitfront.io/r/user-5087757/408ba41c7f474f7f904c43323e7d69935b073e72/casino/"
+           class="git-link">
+            Download the repo
+        </a>
     </div>
 </template>
 
 <script>
 import CasinoDeck from '@/models/CasinoDeck';
 import PlayerHand from '@/models/PlayerHand';
-import CasinoCard from "@/components/CasinoCard.vue";
-import { GAME_STATES } from "@/constants";
+import CasinoCard from '@/components/CasinoCard.vue';
+import { GAME_STATES } from '@/constants';
 
 export default {
     name: 'App',
