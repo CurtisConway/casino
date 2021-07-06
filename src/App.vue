@@ -262,6 +262,7 @@ export default {
 
         handleSuccess() {
             clearTimeout(this.gameTimer);
+            this.completedRounds = 0;
             this.dialogText = 'Skill testing question validation complete...';
             this.gameState = GAME_STATES.waiting;
             this.resetInput();
