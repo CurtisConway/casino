@@ -79,11 +79,6 @@
                 <input id="rounds" type="number" v-model.number="roundsInterface" min="1" max="10">
             </div>
         </div>
-
-        <a href="https://gitfront.io/r/user-5087757/408ba41c7f474f7f904c43323e7d69935b073e72/casino/"
-           class="git-link">
-            Download the repo
-        </a>
     </div>
 </template>
 
