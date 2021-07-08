@@ -122,21 +122,15 @@ export default {
             return this.gameState === GAME_STATES.success || this.gameState === GAME_STATES.failure;
         },
 
-        handValues() {
-            const values = [];
+        handValue() {
+            let value = 0;
             if (this.hand.cards.length) {
-                values.push(this.hand.cards
-                    .map((card) => card.value)
-                    .reduce((accumulator = 0, currentValue) => accumulator + currentValue));
-                if (this.hand.cards.filter((card) => card.name === 'Ace').length > 0) {
-                    values.push(values[0] + 10);
-                }
+                const aces = this.hand.cards.filter((card) => card.name === 'Ace').length;
+                value = this.hand.cards.map((card) => card.value)
+                    .reduce((accumulator = 0, current) => accumulator + current);
+                value += (aces * 10);
             }
-            return values;
-        },
-
-        largestHandValue() {
-            return (this.handValues[1] || this.handValues[0]) || 0;
+            return value;
         },
 
         allowSubmission() {
@@ -215,7 +209,7 @@ export default {
 
         checkValueSubmission() {
             // eslint-disable-next-line eqeqeq
-            if (this.submission == this.largestHandValue) {
+            if (this.submission == this.handValue) {
                 this.extraQuestion = true;
                 this.randomQuestion = this.generateRandomQuestion();
             } else {
