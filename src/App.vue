@@ -15,7 +15,7 @@
                 </div>
             </div>
 
-            <div v-if="isPlaying" class="game-board">
+            <div v-show="isPlaying" class="game-board">
                 <div class="table-instructions">
                     <svg height="100%" width="100%" viewBox="0 0 200 200">
                         <defs>
@@ -65,7 +65,7 @@
             </div>
         </div>
 
-        <div class="settings" v-if="gameComplete">
+        <div class="settings" v-show="gameComplete">
             <div class="row">
                 <label for="cards">Cards (2-5)</label>
                 <input id="cards" type="number" v-model.number="cardsInterface" min="2" max="5">
