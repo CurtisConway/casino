@@ -48,7 +48,7 @@
                         v-for="(card, i) in hand.cards"
                         :key="`card-${i}`"
                         :card="card"
-                        :class="{'un-dealt': !cards[i].dealt}" />
+                        :class="{'un-dealt': i + 1 > cardsDealt}" />
                 </div>
                 <div class="input-box" v-if="allowSubmission">
                     <form @submit="checkSubmission">
@@ -95,7 +95,7 @@ export default {
         return {
             deck: new CasinoDeck(),
             hand: new PlayerHand(),
-            cards: [],
+            cardsDealt: 0,
             handSize: 3,
             timer: 10,
             rounds: 3,
@@ -106,7 +106,6 @@ export default {
             randomQuestion: null,
             dialogText: 'Unauthorized casino winnings detected...',
             gameState: GAME_STATES.waiting,
-            showSettings: false,
         };
     },
     computed: {
@@ -168,6 +167,7 @@ export default {
         dealCards() {
             this.resetInput();
             this.cards = [];
+            this.cardsDealt = 0;
             this.hand = new PlayerHand();
             this.$nextTick(() => {
                 this.dealCard(this.handSize - 1);
@@ -178,13 +178,8 @@ export default {
             this.hand.addCard(this.deck.cards[this.deck.cards.length - 1]);
             this.deck.cards.pop();
             clearTimeout(this.gameTimer);
-
-            const card = {
-                dealt: false,
-            };
-            this.cards.push(card);
             setTimeout(() => {
-                card.dealt = true;
+                this.cardsDealt += 1;
                 if (additionalCards) {
                     setTimeout(() => {
                         this.dealCard(additionalCards - 1);
